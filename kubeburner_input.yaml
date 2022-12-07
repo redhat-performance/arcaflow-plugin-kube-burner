@@ -1,0 +1,7 @@
+workload: 'node-density'
+uuid: '23434-abcd-ertr-uyrt'
+es_server: 'https://search-perfscale-dev-chmf5l4sh66lvxbnadi4bznl3a.us-west-2.es.amazonaws.com:443'
+es_index: 'ripsaw-kube-burner'
+qps: 20
+burst: 20
+loglevel: 'info'
