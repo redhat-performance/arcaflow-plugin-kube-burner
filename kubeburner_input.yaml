@@ -5,6 +5,6 @@ es_index: 'ripsaw-kube-burner'
 qps: 20
 burst: 20
 log_level: 'info'
-pods_per_node: 30
+pods_per_node: 80
 timeout: '25m'
 pod_ready_threshold: '20s'

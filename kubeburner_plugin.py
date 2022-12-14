@@ -8,7 +8,7 @@ from typing import List,Dict
 import subprocess
 import datetime
 import yaml
-from kubeburner_schema import KubeBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema
+from kubeburner_schema import KubeBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema,node_density_params,cluster_density_params
 
 
 
@@ -24,11 +24,18 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
     
     serialized_params = kube_burner_input_schema.serialize(params)
 
+    if 'node-density' in params.workload:
+        param_list=node_density_params
+    else: 
+        param_list=cluster_density_params
+    
     flags = []
     for param, value in serialized_params.items():
-        if param == "workload":
-            continue
-        flags.append(f"--{param}={value}")
+        if param in param_list:
+            if '_' in param:
+                param = param.replace("_", "-")
+            flags.append(f"--{param}={value}")
+
 
     try:
         cmd=['./kube-burner', 'ocp', str(params.workload)] + flags 
