@@ -47,25 +47,67 @@ class KubeBurnerInputParams:
     es_index: Optional[str] = field(
         default=None,
         metadata={
-            "name": "ESIndex",
+            "name": "es-index",
             "description": "The ElasticSearch index used to index the metrics",
         }
     )
     es_server: Optional[str] = field(
         default=None,
         metadata={
-            "name": "ESServer",
+            "name": "es-server",
             "description": "List of ES instances",
         }
     )
-    loglevel: str = field(
+    log_level: str = field(
         default='info',
         metadata={
             "name": "log-level",
             "description": "Allowed values: trace, debug, info, warn, error, fatal",
         }
     )
-
+    timeout: Optional[str] = field(
+        default='2h',
+        metadata={
+            "name": "timeout",
+            "description": "Benchmark timeout",
+        }
+    )
+    pods_per_node: Optional[int] = field(
+        default= 245,
+        metadata={
+            "name": "pods-per-node",
+            "description": "Pods per node for node-density* workloads",
+        }
+    )
+            
+    pod_ready_threshold: Optional[str] = field(
+        default='5s',
+        metadata={
+            "name": "pod-ready-threshold",
+            "description": "Pod ready timeout threshold for node-density workload",
+        }
+    )
+    iterations: Optional[int] = field(
+        default=500,
+        metadata={
+            "name": "iterations",
+            "description": "Cluster-density iterations",
+        }
+    )
+    alerting: Optional[bool] = field(
+        default=True,
+        metadata={
+            "name": "alerting",
+            "description": "Enable alerting",
+        }
+    )
+    gc: Optional[bool] = field(
+        default=True,
+        metadata={
+            "name": "gc",
+            "description": "Garbage collect created namespaces",
+        }
+    )
 
 
 @dataclass
@@ -87,8 +129,6 @@ class ErrorOutput:
         "name": "Exit Code", "description": "Exit code returned by the program in case of a failure"})
     error: str = field(metadata={
         "name": "Failure Error", "description": "Reason for failure"})
-
-
 
 
 

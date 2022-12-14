@@ -23,7 +23,7 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
     print("==>> Running Kube Burner {} Workload ...".format(params.workload))
     
     try:
-        cmd=['./kube-burner', 'ocp', str(params.workload), '--uuid='+str(params.uuid) ]
+        cmd=['./kube-burner', 'ocp', str(params.workload), '--uuid', str(params.uuid) ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
