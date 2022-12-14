@@ -131,6 +131,5 @@ class ErrorOutput:
         "name": "Failure Error", "description": "Reason for failure"})
 
 
-
 kube_burner_input_schema = plugin.build_object_schema(KubeBurnerInputParams)
 kube_burner_output_schema = plugin.build_object_schema(ErrorOutput)

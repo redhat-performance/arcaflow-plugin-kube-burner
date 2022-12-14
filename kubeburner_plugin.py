@@ -22,8 +22,16 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
 
     print("==>> Running Kube Burner {} Workload ...".format(params.workload))
     
+    serialized_params = kube_burner_input_schema.serialize(params)
+
+    flags = []
+    for param, value in serialized_params.items():
+        if param == "workload":
+            continue
+        flags.append(f"--{param}={value}")
+
     try:
-        cmd=['./kube-burner', 'ocp', str(params.workload), '--uuid', str(params.uuid) ]
+        cmd=['./kube-burner', 'ocp', str(params.workload)] + flags 
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
