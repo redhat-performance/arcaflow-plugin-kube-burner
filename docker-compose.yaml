@@ -1,9 +1,9 @@
 version: '3.2'
 services:
   plugin:
-    image: ghcr.io/arcalot/arcaflow-plugin-template
+    image: ghcr.io/arcalot/arcaflow-plugin-kube-burner
     build: .
     volumes:
-      - source: ./example.yaml
-        target: /config/example.yaml
+      - source: ./kubeburner_input.yaml
+        target: /kubeburner_input.yaml
         type: bind
