@@ -2,8 +2,6 @@
 FROM quay.io/centos/centos:stream8 as poetry
 
 RUN dnf -y module install python39 && dnf -y install python39 python39-pip
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.0/kube-burner-1.0-Linux-x86_64.tar.gz | tar xz -C /usr/bin kube-burner
-
 
 WORKDIR /app
 
@@ -31,20 +29,18 @@ RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 FROM quay.io/centos/centos:stream8
 ENV package arcaflow_plugin_kubeburner
 RUN dnf -y module install python39 && dnf -y install python39 python39-pip
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.0/kube-burner-1.0-Linux-x86_64.tar.gz | tar xz -C /usr/bin kube-burner
-
 WORKDIR /app
 
 COPY --from=poetry /app/requirements.txt /app/
 COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
-ENV PYTHONPATH /app/${package}
-
+COPY ${package}/ /app/${package}
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.1/kube-burner-1.1-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 
 RUN python3.9 -m pip install -r requirements.txt
-WORKDIR /app/${package}
-ENTRYPOINT ["python3", "/app/kubeburner_plugin.py"]
+WORKDIR /app
+ENTRYPOINT ["python3", "arcaflow_plugin_kubeburner/kubeburner_plugin.py"]
 CMD []
 
 LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-kube-burner"
