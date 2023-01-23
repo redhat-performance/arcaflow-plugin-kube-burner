@@ -13,7 +13,8 @@ class KubeburnerPluginTest(unittest.TestCase):
             kubeburner_plugin.KubeBurnerInputParams(
                 workload='node-density',
                 es_server="https://search-dev-chm.west-2.es.amazonaws.com:443",
-                es_index="index"
+                es_index="index",
+                kubeconfig="abc"
                 )
         )
 

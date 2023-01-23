@@ -23,6 +23,12 @@ class KubeBurnerInputParams:
             "description": "workload name",
         }
     )
+    kubeconfig: str = field(
+        metadata={
+            "name": "kubeconfig",
+            "description": "Openshift cluster kubeconfig file content as a string"
+        }
+    )
     uuid: Optional[str] = field(
         default=None,
         metadata={
@@ -108,6 +114,7 @@ class KubeBurnerInputParams:
             "description": "Garbage collect created namespaces",
         }
     )
+
 
 
 @dataclass

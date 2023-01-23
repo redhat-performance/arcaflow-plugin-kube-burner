@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys
+import sys, os
 import typing
 from dataclasses import dataclass, field
 from arcaflow_plugin_sdk import plugin, validation,schema
@@ -10,7 +10,14 @@ import datetime
 import yaml
 from kubeburner_schema import KubeBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema,node_density_params,cluster_density_params
 
+def safe_open(path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    return open(path, 'w')
 
+def readkubeconfig(kubeconfig):
+    path="./kubeconfig"
+    with safe_open(str(path)) as file:
+     file.write(kubeconfig)
 
 @plugin.step(
     id="kube-burner",
@@ -22,6 +29,9 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
 
     print("==>> Running Kube Burner {} Workload ...".format(params.workload))
     
+    readkubeconfig(params.kubeconfig)
+    os.environ['KUBECONFIG'] = "./kubeconfig"
+
     serialized_params = kube_burner_input_schema.serialize(params)
 
     if 'node-density' in params.workload:
