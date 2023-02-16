@@ -5,7 +5,7 @@ import sys
 import typing
 from dataclasses import dataclass, field
 from typing import List,Dict,Optional,Annotated
-from arcaflow_plugin_sdk import plugin,schema,annotations
+from arcaflow_plugin_sdk import plugin, schema, annotations, validation
 import subprocess
 import datetime
 import yaml
@@ -17,113 +17,169 @@ class KubeBurnerInputParams:
     This is the data structure for the input parameters for kube-burner workloads.
     """
 
-    workload: str = field(
-        metadata={
-            "name": "Name",
-            "description": "workload name",
-        }
-    )
-    kubeconfig: str = field(
-        metadata={
-            "name": "kubeconfig",
-            "description": "Openshift cluster kubeconfig file content as a string"
-        }
-    )
-    uuid: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "uuid",
-            "description": "uuid to be used for the job",
-        }
-    )
-    qps: Optional[int] = field(
-        default=20,
-        metadata={
-            "name": "QPS",
-            "description": "Max number of queries per second",
-        }
-    )
-    burst: Optional[int] = field(
-        default=20,
-        metadata={
-            "name": "Burst",
-            "description": "Maximum burst for throttle",
-        }
-    )
-    es_index: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "es-index",
-            "description": "The ElasticSearch index used to index the metrics",
-        }
-    )
-    es_server: Optional[str] = field(
-        default=None,
-        metadata={
-            "name": "es-server",
-            "description": "List of ES instances",
-        }
-    )
-    log_level: str = field(
-        default='info',
-        metadata={
-            "name": "log-level",
-            "description": "Allowed values: trace, debug, info, warn, error, fatal",
-        }
-    )
-    timeout: Optional[str] = field(
-        default='2h',
-        metadata={
-            "name": "timeout",
-            "description": "Benchmark timeout",
-        }
-    )
-    pods_per_node: Optional[int] = field(
-        default= 245,
-        metadata={
-            "name": "pods-per-node",
-            "description": "Pods per node for node-density* workloads",
-        }
-    )
+    workload: typing.Annotated[
+        str,
+        schema.name("Name"),
+        schema.description("workload name"),
+    ]    
+    
+    kubeconfig: typing.Annotated[
+        str,
+        schema.name("kubeconfig"),
+        schema.description("Openshift cluster kubeconfig file content as a string")
+    ]    
+    
+    uuid: typing.Annotated[
+        typing.Optional[str],
+        schema.name("uuid"),
+        schema.description("uuid to be used for the job"),
+    ] = None 
+
+    qps: typing.Annotated[
+        typing.Optional[int],
+        schema.name("QPS"),
+        schema.description("Max number of queries per second"),
+    ] = 20    
+    
+    burst: typing.Annotated[
+        typing.Optional[int],
+        schema.name("Burst"),
+        schema.description("Maximum burst for throttle"),
+    ] = 20    
+    
+    es_index: typing.Annotated[
+        typing.Optional[str],
+        schema.name("es-index"),
+        schema.description("The ElasticSearch index used to index the metrics"),
+    ] = None   
+    
+    es_server: typing.Annotated[
+        typing.Optional[str],
+        schema.name("es-server"),
+        schema.description("List of ES instances"),
+    ] = None   
+    
+    log_level: typing.Annotated[
+        typing.Optional[str],
+        schema.name("log-level"),
+        schema.description("Allowed values: trace, debug, info, warn, error, fatal"),
+    ] = 'info'   
+    
+    timeout: typing.Annotated[
+        typing.Optional[str],
+        schema.name("timeout"),
+        schema.description("Benchmark timeout"),
+    ] = '2h'
+    
+    pods_per_node: typing.Annotated[
+        typing.Optional[int],
+        schema.name("pods-per-node"),
+        schema.description("Pods per node for node-density* workloads"),
+    ] = 245 
+    
             
-    pod_ready_threshold: Optional[str] = field(
-        default='5s',
-        metadata={
-            "name": "pod-ready-threshold",
-            "description": "Pod ready timeout threshold for node-density workload",
-        }
-    )
-    iterations: Optional[int] = field(
-        default=500,
-        metadata={
-            "name": "iterations",
-            "description": "Cluster-density iterations",
-        }
-    )
-    alerting: Optional[bool] = field(
-        default=True,
-        metadata={
-            "name": "alerting",
-            "description": "Enable alerting",
-        }
-    )
-    gc: Optional[bool] = field(
-        default=True,
-        metadata={
-            "name": "gc",
-            "description": "Garbage collect created namespaces",
-        }
-    )
+    pod_ready_threshold: typing.Annotated[
+        typing.Optional[str],
+        schema.name("pod-ready-threshold"),
+        schema.description("Pod ready timeout threshold for node-density workload"),
+    ] = '5s'
+    
+    iterations: typing.Annotated[
+        typing.Optional[int],
+        schema.name("iterations"),
+        schema.description("Cluster-density iterations"),
+    ] = 500
+    
+    alerting: typing.Annotated[
+        typing.Optional[str],
+        schema.name("alerting"),
+        schema.description("Enable alerting(true/false)"),
+    ] = 'true'   
+    
+    gc: typing.Annotated[
+        typing.Optional[str],
+        schema.name("gc"),
+        schema.description("Garbage collect created namespaces(true/false)"),
+    ] = 'true'
+
+    probes_period: typing.Annotated[
+        typing.Optional[int],
+        schema.name("probes-period"),
+        schema.description("Perf app readiness/livenes probes period in seconds")
+    ] = 10
+
+    network_policies: typing.Annotated[
+        typing.Optional[str],
+        schema.name("network-policies"),
+        schema.description("Enable network policies in the workload")
+    ] = 'true'
+
+    churn: typing.Annotated[
+        typing.Optional[str],
+        schema.name("churn"),
+        schema.description("Enable churning(true/false)")
+    ] = 'true'
+
+    churn_delay: typing.Annotated[
+        typing.Optional[str],
+        schema.name("churn-delay"),
+        schema.description("Time to wait between each churn")
+    ] = '2m0s'
+
+    churn_duration: typing.Annotated[
+        typing.Optional[str],
+        schema.name("churn-duration"),
+        schema.description("Churn duration")
+    ] = '1h0m0s'
+
+    churn_percent: typing.Annotated[
+        typing.Optional[int],
+        schema.name("churn-percent"),
+        schema.description("Percentage of job iterations that kube-burner will churn each round")
+    ] = 10    
 
 
+@dataclass
+class WebBurnerInputParams:
+    """
+    This is the data structure for the input parameters for web-burner workloads.
+    """
+
+    workload_template: typing.Annotated[
+        str,        
+        schema.name("Workload Template"),
+        schema.description("Kube-burner Template to use"),
+    ]    
+    
+    scale_factor: typing.Annotated[
+        typing.Optional[int],
+        schema.name("Scale Factor"),
+        schema.description("Scaling factor for the workload"),
+    ] = 1
+    
+    bfd_enabled: typing.Annotated[
+        typing.Optional[str],
+        schema.name("BFD"),
+        schema.description("Bidirectional Forwarding Detection"),
+    ] = 'false'
+    
 
 @dataclass
 class SuccessOutput:
     """
     This is the data structure for output returned by kube-burner workloads.
     """
-    uuid: str = field(metadata={"name": "UUID", "description": "UUID used for this workload run"})
-    output: str = field(metadata={"name": "Kube burner workload output", "description": "Output generated by the kube burner workload"})
+    uuid: typing.Annotated[
+        str,
+        schema.name("UUID"), 
+        schema.description("UUID used for this workload run")
+    ]
+
+    output: typing.Annotated[
+        str,
+        schema.name("Kube burner workload output"),
+        schema.description("Output generated by the kube burner workload")
+    ]
 
 
 
@@ -132,10 +188,17 @@ class ErrorOutput:
     """
     This is the output data structure in the error case.
     """
-    exit_code: int = field(metadata={
-        "name": "Exit Code", "description": "Exit code returned by the program in case of a failure"})
-    error: str = field(metadata={
-        "name": "Failure Error", "description": "Reason for failure"})
+    exit_code: typing.Annotated[
+        int,
+        schema.name("Exit Code"), 
+        schema.description("Exit code returned by the program in case of a failure"),
+    ]
+
+    error: typing.Annotated[
+        str,
+        schema.name("Failure Error"), 
+        schema.description("Reason for failure"),
+    ]
 
 
 kube_burner_input_schema = plugin.build_object_schema(KubeBurnerInputParams)

@@ -36,7 +36,7 @@ COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.1/kube-burner-1.1-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.3/kube-burner-1.3-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 
 RUN python3.9 -m pip install -r requirements.txt
 WORKDIR /app
