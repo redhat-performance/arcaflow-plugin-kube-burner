@@ -43,7 +43,7 @@ WORKDIR /app
 ENTRYPOINT ["python3", "arcaflow_plugin_kubeburner/kubeburner_plugin.py"]
 CMD []
 
-LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-kube-burner"
+LABEL org.opencontainers.image.source="https://github.com/redhat-performance/arcaflow-plugin-kube-burner"
 LABEL org.opencontainers.image.licenses="Apache-2.0+GPL-2.0-only"
 LABEL org.opencontainers.image.vendor="Arcalot project"
 LABEL org.opencontainers.image.authors="Arcalot contributors"

@@ -204,4 +204,6 @@ class ErrorOutput:
 kube_burner_input_schema = plugin.build_object_schema(KubeBurnerInputParams)
 kube_burner_output_schema = plugin.build_object_schema(ErrorOutput)
 node_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'alerting', 'gc']
-cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc']
+node_density_cni_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'alerting', 'gc']
+node_density_heavy_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'probes_period' 'alerting', 'gc']
+cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc', 'churn', 'churn-delay', 'churn-duration', 'churn-percent']

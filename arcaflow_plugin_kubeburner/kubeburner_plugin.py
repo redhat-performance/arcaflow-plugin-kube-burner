@@ -9,7 +9,7 @@ import subprocess
 import datetime
 import yaml
 import time
-from kubeburner_schema import KubeBurnerInputParams, WebBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema,node_density_params,cluster_density_params
+from kubeburner_schema import KubeBurnerInputParams, WebBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema,node_density_params,cluster_density_params, node_density_cni_params, node_density_heavy_params
 
 def safe_open(path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -57,10 +57,16 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
 
     serialized_params = kube_burner_input_schema.serialize(params)
 
-    if 'node-density' in params.workload:
+    if params.workload == "node-density":
         param_list=node_density_params
-    else: 
+    elif params.workload == "node-density-cni":
+        param_list=node_density_cni_params
+    elif params.workload == "node-density-heavy":
+        param_list=node_density_heavy_params
+    elif params.workload == "cluster-density":
         param_list=cluster_density_params
+    else: 
+        param_list= ['--help']
     
     flags = []
     for param, value in serialized_params.items():
