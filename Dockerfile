@@ -28,7 +28,7 @@ RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 # final image
 FROM quay.io/centos/centos:stream8
 ENV package arcaflow_plugin_kubeburner
-RUN dnf -y module install python39 && dnf -y install python39 python39-pip
+RUN dnf -y module install python39 && dnf -y install python39 python39-pip git
 WORKDIR /app
 
 COPY --from=poetry /app/requirements.txt /app/
@@ -37,7 +37,7 @@ COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
 RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.3/kube-burner-1.3-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
-RUN git clone https://github.com/redhat-performance/web-burner.git /app/
+RUN git clone https://github.com/redhat-performance/web-burner.git
 RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/
 RUN python3.9 -m pip install -r requirements.txt
 WORKDIR /app
