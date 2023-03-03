@@ -153,7 +153,13 @@ class WebBurnerInput:
         str,        
         schema.name("Workload Template"),
         schema.description("Kube-burner Template to use"),
-    ]    
+    ] 
+
+    kubeconfig: typing.Annotated[
+        str,
+        schema.name("kubeconfig"),
+        schema.description("Openshift cluster kubeconfig file content as a string")
+    ]   
     
     scale_factor: typing.Annotated[
         typing.Optional[int],

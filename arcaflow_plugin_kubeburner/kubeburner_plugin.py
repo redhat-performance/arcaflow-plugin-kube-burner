@@ -65,14 +65,14 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
 )
 def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
 
-    print("==>> Running Web Burner {} Workload ...".format(params.workload))
+    print("==>> Running Web Burner {} Workload ...".format(params.workload_template))
     
     readkubeconfig(params.kubeconfig)
     os.environ['KUBECONFIG'] = "./kubeconfig"
-    os.environ['SCALE'] = params.scale_factor
+    os.environ['SCALE'] = str(params.scale_factor)
     os.environ['BFD'] = params.bfd_enabled
-    os.environ['QPS'] = params.qps
-    os.environ['BURST'] = params.burst
+    os.environ['QPS'] = str(params.qps)
+    os.environ['BURST'] = str(params.burst)
     os.environ['INDEXING'] = params.indexing
     prom_url , prom_token = get_prometheus_creds()
 
@@ -107,14 +107,14 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
 )
 def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
 
-    print("==>> Running Kube Burner {} Workload ...".format(params.workload))
+    print("==>> Running Kube Burner {} Workload ...".format(params.workload_template))
     
     readkubeconfig(params.kubeconfig)
     os.environ['KUBECONFIG'] = "./kubeconfig"
-    os.environ['SCALE'] = params.scale_factor
+    os.environ['SCALE'] = str(params.scale_factor)
     os.environ['BFD'] = params.bfd_enabled
-    os.environ['QPS'] = params.qps
-    os.environ['BURST'] = params.burst
+    os.environ['QPS'] = str(params.qps)
+    os.environ['BURST'] = str(params.burst)
     prom_url , prom_token = get_prometheus_creds()
 
     try:

@@ -14,7 +14,7 @@ In order to run the [kube-burner plugin](arcaflow_plugin_kubeburner/kubeburner_p
 ### Native 
 *Note: The plugin should be able to access the kubeconfig of your openshift cluster and the kube-burner binary must be downloaded locally. Install poetry(curl -sSL https://install.python-poetry.org | python3 - )*
 1. Clone this repository
-2. Create a `venv` in the current directory with `python3 -m venv $(pwd)/venv`
+2. Create a `venv` in the current directory with `python3.9 -m venv $(pwd)/venv`
 3. Activate the `venv` by running `source venv/bin/activate`
 4. cd arcaflow-plugin-kube-burner
 5. curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.3/kube-burner-1.3-Linux-x86_64.tar.gz | tar xz -C . kube-burner
@@ -32,9 +32,9 @@ In order to run the [kube-burner plugin](arcaflow_plugin_kubeburner/kubeburner_p
 In order to run the [web-burner plugin](arcaflow_plugin_kubeburner/kubeburner_plugin.py) run the following steps:
 
 ### Native 
-*Note: The plugin should be able to access the kubeconfig of your openshift cluster and the kube-burner binary must be downloaded locally. Install poetry(curl -sSL https://install.python-poetry.org | python3 - )*
+*Note: The plugin should be able to access the kubeconfig of your openshift cluster and the kube-burner binary must be downloaded locally. Install poetry(curl -sSL https://install.python-poetry.org | python3 - ). Poetry requires python version > 3.7, recommended to use >3.9*
 1. Clone this repository
-2. Create a `venv` in the current directory with `python3 -m venv $(pwd)/venv`
+2. Create a `venv` in the current directory with `python3.9 -m venv $(pwd)/venv`
 3. Activate the `venv` by running `source venv/bin/activate`
 4. Run git clone https://github.com/redhat-performance/web-burner.git
 5. Run cp -r web-burner/workload web-burner/objectTemplates arcaflow-plugin-kube-burner/
