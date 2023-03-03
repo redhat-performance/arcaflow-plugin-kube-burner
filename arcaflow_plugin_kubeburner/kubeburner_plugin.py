@@ -96,7 +96,7 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
 
     output = process_out.decode("utf-8")
 
-    print("==>> Web Burner {} Workload complete!".format(params.workload))    
+    print("==>> Web Burner {} Workload complete!".format(params.workload_template))    
     return "success", SuccessOutput(params.uuid,output)
 
 @plugin.step(
@@ -137,7 +137,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
 
     output = process_out.decode("utf-8")
 
-    print("==>> Web Burner {} Workload complete!".format(params.workload))    
+    print("==>> Web Burner {} Workload complete!".format(params.workload_template))    
     return "success", SuccessOutput(params.uuid,output)
 
 
