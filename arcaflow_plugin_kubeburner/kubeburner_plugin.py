@@ -9,43 +9,13 @@ import subprocess
 import datetime
 import yaml
 import time
-from kubeburner_schema import KubeBurnerInputParams, WebBurnerInputParams, SuccessOutput, ErrorOutput, kube_burner_output_schema, kube_burner_input_schema,node_density_params,cluster_density_params, node_density_cni_params, node_density_heavy_params
-
-def safe_open(path):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    return open(path, 'w')
-
-def readkubeconfig(kubeconfig):
-    path="./kubeconfig"
-    with safe_open(str(path)) as file:
-     file.write(kubeconfig)
-
-def get_prometheus_creds():
-    cmd=['oc', 'get', 'route', '-n', 'openshift-monitoring', 'prometheus-k8s', '-o', 'jsonpath="{.spec.host}"' ]
-    prom_url= subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-    prom_url = prom_url.decode("utf-8")
-    prom_url = prom_url.strip('\"')
-    prom_url="https://"+prom_url
-    prom_token = ''
-
-    try:
-        cmd=['oc', 'create', 'token', '-n', 'openshift-monitoring', 'prometheus-k8s', '--duration=6h' ]
-        prom_token= subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-        prom_token = prom_token.decode("utf-8")
-    except subprocess.CalledProcessError as error:
-        try:
-            cmd=['oc', '-n', 'openshift-monitoring', 'sa', 'new-token', 'prometheus-k8s' ]
-            prom_token= subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-            prom_token = prom_token.decode("utf-8")
-        except subprocess.CalledProcessError as error:
-                return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
-
-    return prom_url,prom_token
+from kubeburner_schema import KubeBurnerInputParams, WebBurnerInputParams, SuccessOutput, ErrorOutput, output_schema, kube_burner_input_schema, web_burner_input_schema ,node_density_params,cluster_density_params, node_density_cni_params, node_density_heavy_params
+from helper_functions import get_prometheus_creds, safe_open, readkubeconfig
 
 @plugin.step(
     id="kube-burner",
     name="Kube-Burner Workload",
-    description="Kube-burner Workload which stresses the cluster. Creates a single namespace with a number of Deployments",
+    description="Kube-burner Workloads: node-density, node-density-cni, node-density-heavy, cluster-density, cluster-density-v2",
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
 def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
@@ -63,7 +33,7 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
         param_list=node_density_cni_params
     elif params.workload == "node-density-heavy":
         param_list=node_density_heavy_params
-    elif params.workload == "cluster-density":
+    elif "cluster-density" in params.workload:
         param_list=cluster_density_params
     else: 
         param_list= ['--help']
@@ -93,7 +63,7 @@ def RunKubeBurner(params: KubeBurnerInputParams ) -> typing.Tuple[str, typing.Un
     description="Web-burner Workload which uses kube-burner templates to create the workload",
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
-def CreateWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
+def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
 
     print("==>> Running Web Burner {} Workload ...".format(params.workload))
     
@@ -101,6 +71,9 @@ def CreateWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
     os.environ['KUBECONFIG'] = "./kubeconfig"
     os.environ['SCALE'] = params.scale_factor
     os.environ['BFD'] = params.bfd_enabled
+    os.environ['QPS'] = params.qps
+    os.environ['BURST'] = params.burst
+    os.environ['INDEXING'] = params.indexing
     prom_url , prom_token = get_prometheus_creds()
 
     try:
@@ -110,6 +83,7 @@ def CreateWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
 
+    print("Pausing for a minute..")
     time.sleep(60)
 
     try:
@@ -139,6 +113,8 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
     os.environ['KUBECONFIG'] = "./kubeconfig"
     os.environ['SCALE'] = params.scale_factor
     os.environ['BFD'] = params.bfd_enabled
+    os.environ['QPS'] = params.qps
+    os.environ['BURST'] = params.burst
     prom_url , prom_token = get_prometheus_creds()
 
     try:
@@ -148,6 +124,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
 
+    print("Pausing for a minute..")
     time.sleep(60)
 
     try:
@@ -171,7 +148,7 @@ if __name__ == "__main__":
             plugin.build_schema(
                 # List your step functions here:
                 RunKubeBurner,
-                CreateWebBurner,
+                RunWebBurner,
                 DeleteWebBurner
             )
         )

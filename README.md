@@ -49,8 +49,8 @@ In order to run the [web-burner plugin](arcaflow_plugin_kubeburner/kubeburner_pl
 1. Clone this repository
 2. cd arcaflow-plugin-kube-burner
 3. Copy and Paste the openshift cluster's kubeconfig file content into the configs/webburner_input.yaml file
-4. Create the container with `docker build -t arca-kube-burner -f Dockerfile`
-5. To run a web-burner workload `cat configs/webburner_input.yaml | docker run -i arca-kube-burner -s run-web-burner--debug -f -`
+4. Create the container with `docker build -t arca-web-burner -f Dockerfile`
+5. To run a web-burner workload `cat configs/webburner_input.yaml | docker run -i arca-web-burner -s run-web-burner--debug -f -`
 6. To delete a web-burner workload `cat configs/webburner_input.yaml | docker run -i arca-kube-burner -s delete-web-burner --debug -f -`           
 
 

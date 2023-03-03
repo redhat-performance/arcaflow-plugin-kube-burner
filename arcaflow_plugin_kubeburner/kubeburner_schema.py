@@ -10,25 +10,11 @@ import subprocess
 import datetime
 import yaml
 
-
 @dataclass
-class KubeBurnerInputParams:
+class CommonInputParams:
     """
-    This is the data structure for the input parameters for kube-burner workloads.
+    This is the data structure for the common input parameters for kube-burner and web-burner workloads.
     """
-
-    workload: typing.Annotated[
-        str,
-        schema.name("Name"),
-        schema.description("workload name"),
-    ]    
-    
-    kubeconfig: typing.Annotated[
-        str,
-        schema.name("kubeconfig"),
-        schema.description("Openshift cluster kubeconfig file content as a string")
-    ]    
-    
     uuid: typing.Annotated[
         typing.Optional[str],
         schema.name("uuid"),
@@ -57,8 +43,26 @@ class KubeBurnerInputParams:
         typing.Optional[str],
         schema.name("es-server"),
         schema.description("List of ES instances"),
-    ] = None   
+    ] = None  
+
+@dataclass
+class KubeBurnerInput():
+    """
+    This is the data structure for the input parameters specific to kube-burner workloads.
+    """
+
+    workload: typing.Annotated[
+        str,
+        schema.name("Name"),
+        schema.description("workload name"),
+    ]    
     
+    kubeconfig: typing.Annotated[
+        str,
+        schema.name("kubeconfig"),
+        schema.description("Openshift cluster kubeconfig file content as a string")
+    ]    
+        
     log_level: typing.Annotated[
         typing.Optional[str],
         schema.name("log-level"),
@@ -140,9 +144,9 @@ class KubeBurnerInputParams:
 
 
 @dataclass
-class WebBurnerInputParams:
+class WebBurnerInput:
     """
-    This is the data structure for the input parameters for web-burner workloads.
+    This is the data structure for the input parameters specific to web-burner workloads.
     """
 
     workload_template: typing.Annotated[
@@ -162,7 +166,26 @@ class WebBurnerInputParams:
         schema.name("BFD"),
         schema.description("Bidirectional Forwarding Detection"),
     ] = 'false'
-    
+
+    indexing: typing.Annotated[
+        typing.Optional[str],
+        schema.name("INDEXING"),
+        schema.description("To enable or disable indexing in elasticsearch(true/false)"),
+    ] = 'false'
+
+
+@dataclass
+class KubeBurnerInputParams(CommonInputParams,KubeBurnerInput):
+    """
+    This is the data structure for the input parameters for kube-burner workloads.
+    """    
+
+@dataclass
+class WebBurnerInputParams(CommonInputParams,WebBurnerInput):
+    """
+    This is the data structure for the input parameters for web-burner workloads.
+    """
+
 
 @dataclass
 class SuccessOutput:
@@ -202,8 +225,9 @@ class ErrorOutput:
 
 
 kube_burner_input_schema = plugin.build_object_schema(KubeBurnerInputParams)
-kube_burner_output_schema = plugin.build_object_schema(ErrorOutput)
+web_burner_input_schema = plugin.build_object_schema(WebBurnerInputParams)
+output_schema = plugin.build_object_schema(SuccessOutput)
 node_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'alerting', 'gc']
 node_density_cni_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'alerting', 'gc']
 node_density_heavy_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'probes_period' 'alerting', 'gc']
-cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc', 'churn', 'churn-delay', 'churn-duration', 'churn-percent']
+cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc', 'churn', 'churn_delay', 'churn_duration', 'churn_percent', 'network_policies']
