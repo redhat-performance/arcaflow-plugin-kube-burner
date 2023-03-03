@@ -230,4 +230,4 @@ output_schema = plugin.build_object_schema(SuccessOutput)
 node_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'alerting', 'gc']
 node_density_cni_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'alerting', 'gc']
 node_density_heavy_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'timeout', 'pods_per_node', 'pod_ready_threshold', 'probes_period' 'alerting', 'gc']
-cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc', 'churn', 'churn_delay', 'churn_duration', 'churn_percent', 'network_policies']
+cluster_density_params = [ 'uuid', 'qps', 'burst', 'es_index', 'es_server', 'log_level', 'iterations', 'timeout', 'alerting', 'gc', 'churn', 'churn_delay', 'churn_duration', 'churn_percent']
