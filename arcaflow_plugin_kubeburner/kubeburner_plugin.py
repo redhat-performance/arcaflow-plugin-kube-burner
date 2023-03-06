@@ -10,7 +10,7 @@ import datetime
 import yaml
 import time
 from kubeburner_schema import KubeBurnerInputParams, WebBurnerInputParams, SuccessOutput, ErrorOutput, output_schema, kube_burner_input_schema, web_burner_input_schema ,node_density_params,cluster_density_params, node_density_cni_params, node_density_heavy_params
-from helper_functions import get_prometheus_creds, safe_open, readkubeconfig
+from helper_functions import get_prometheus_creds, safe_open, readkubeconfig, calculate_normal_limit_count
 
 @plugin.step(
     id="kube-burner",
@@ -69,16 +69,17 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
     
     readkubeconfig(params.kubeconfig)
     os.environ['KUBECONFIG'] = "./kubeconfig"
-    os.environ['SCALE'] = str(params.scale_factor)
+    os.environ['SCALE'] = str(params.scale_factor)  #exporting these vars as they are read by the kube-burner templates
     os.environ['BFD'] = params.bfd_enabled
     os.environ['QPS'] = str(params.qps)
     os.environ['BURST'] = str(params.burst)
     os.environ['INDEXING'] = params.indexing
+    os.environ['NORMAL_LIMIT_COUNT'] = calculate_normal_limit_count(params.number_of_nodes)
     prom_url , prom_token = get_prometheus_creds()
 
     try:
         print("Creating the SPK pods..")
-        cmd=['./kube-burner', 'init', '-c', 'workload/cfg_icni2_serving_resource_init.yml', '-t', str(prom_token), '--uuid', '1234' ]
+        cmd=['./web-burner', 'init', '-c', 'workload/cfg_icni2_serving_resource_init.yml', '-t', str(prom_token), '--uuid', '1234' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -88,7 +89,7 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
 
     try:
         print("Creating the ICNI2 workload..", params.uuid)
-        cmd=['./kube-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
+        cmd=['./web-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -119,7 +120,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
 
     try:
         print("Deleting the ICNI2 workload..")
-        cmd=['./kube-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
+        cmd=['./web-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -129,7 +130,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
 
     try:
         print("Deleting the SPK pods..", params.uuid)
-        cmd=['./kube-burner', 'init', '-c', 'workload/cfg_delete_icni2_serving_resource.yml', '-t', str(prom_token), '--uuid', '1234' ]
+        cmd=['./web-burner', 'init', '-c', 'workload/cfg_delete_icni2_serving_resource.yml', '-t', str(prom_token), '--uuid', '1234' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))

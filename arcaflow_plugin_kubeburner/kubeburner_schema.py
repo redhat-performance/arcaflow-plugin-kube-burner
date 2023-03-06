@@ -161,6 +161,12 @@ class WebBurnerInput:
         schema.description("Openshift cluster kubeconfig file content as a string")
     ]   
     
+    number_of_nodes: typing.Annotated[
+        int,
+        schema.name("Number of nodes"),
+        schema.description("Size of cluster/ number of nodes in the cluster"),
+    ] 
+
     scale_factor: typing.Annotated[
         typing.Optional[int],
         schema.name("Scale Factor"),

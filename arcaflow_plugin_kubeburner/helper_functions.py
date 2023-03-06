@@ -33,7 +33,9 @@ def get_prometheus_creds():
 
     return prom_url,prom_token
 
-
+def calculate_normal_limit_count(cluster_size):
+    count = (35 * cluster_size) // 120
+    return count
 
 
 
