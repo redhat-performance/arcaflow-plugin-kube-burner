@@ -35,6 +35,7 @@ class KubeburnerPluginTest(unittest.TestCase):
         plugin.test_object_serialization(
             kubeburner_plugin.WebBurnerInputParams(
             kubeconfig="abc",
+            number_of_nodes=50,
             workload_template="cfg_icni1_f5_node_density.yml",
             scale_factor=2,
             bfd_enabled='false'
