@@ -43,7 +43,7 @@ In order to run the [web-burner plugin](arcaflow_plugin_kubeburner/kubeburner_pl
 
 
 ### Native 
-*Note: The plugin should be able to access the kubeconfig of your openshift cluster and the kube-burner binary must be downloaded locally. Rename the kube-burner binary as web-burner or follow step number 7 below. Install poetry(curl -sSL https://install.python-poetry.org | python3 - ). Poetry requires python version > 3.7, recommended to use >3.9*
+*Note: The plugin should be able to access the kubeconfig of your openshift cluster and the kube-burner binary must be downloaded locally. Rename the kube-burner binary as web-burner or follow step number 7&8 below. Install poetry(curl -sSL https://install.python-poetry.org | python3 - ). Poetry requires python version > 3.7, recommended to use >3.9*
 
 1. Clone this repository
 2. Create a `venv` in the current directory with `python3.9 -m venv $(pwd)/venv`
@@ -51,11 +51,12 @@ In order to run the [web-burner plugin](arcaflow_plugin_kubeburner/kubeburner_pl
 4. Run git clone https://github.com/redhat-performance/web-burner.git --branch v1.0
 5. Run cp -r web-burner/workload web-burner/objectTemplates arcaflow-plugin-kube-burner/
 6. cd arcaflow-plugin-kube-burner
-7. curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C . web-burner
-8. Run `poetry install`
-9. Copy and Paste the openshift cluster's kubeconfig file content into the configs/webburner_input.yaml file
-10. To run a web-burner workload `python3.9 ./arcaflow_plugin_kubeburner/kubeburner_plugin.py -f configs/webburner_input.yaml -s run-web-burner --debug`
-11. To delete a web-burner workload `python3.9 ./arcaflow_plugin_kubeburner/kubeburner_plugin.py -f configs/webburner_input.yaml -s delete-web-burner --debug`
+7. curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C . kube-burner
+8. mv kube-burner web-burner
+9. Run `poetry install`
+10. Copy and Paste the openshift cluster's kubeconfig file content into the configs/webburner_input.yaml file
+11. To run a web-burner workload `python3.9 ./arcaflow_plugin_kubeburner/kubeburner_plugin.py -f configs/webburner_input.yaml -s run-web-burner --debug`
+12. To delete a web-burner workload `python3.9 ./arcaflow_plugin_kubeburner/kubeburner_plugin.py -f configs/webburner_input.yaml -s delete-web-burner --debug`
 
 ### Containerized
 1. Clone this repository
