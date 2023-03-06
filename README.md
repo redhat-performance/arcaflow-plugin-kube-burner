@@ -52,7 +52,7 @@ In order to run the [web-burner plugin](arcaflow_plugin_kubeburner/kubeburner_pl
 5. Run cp -r web-burner/workload web-burner/objectTemplates arcaflow-plugin-kube-burner/
 6. cd arcaflow-plugin-kube-burner
 7. curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C . kube-burner
-8. mv kube-burner web-burner
+8. mv kube-burner kube-burner-0.14.2
 9. Run `poetry install`
 10. Copy and Paste the openshift cluster's kubeconfig file content into the configs/webburner_input.yaml file
 11. To run a web-burner workload `python3.9 ./arcaflow_plugin_kubeburner/kubeburner_plugin.py -f configs/webburner_input.yaml -s run-web-burner --debug`

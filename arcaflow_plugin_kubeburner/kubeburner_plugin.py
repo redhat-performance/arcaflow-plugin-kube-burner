@@ -79,7 +79,7 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
 
     try:
         print("Creating the SPK pods..")
-        cmd=['./web-burner', 'init', '-c', 'workload/cfg_icni2_serving_resource_init.yml', '-t', str(prom_token), '--uuid', '1234' ]
+        cmd=['./kube-burner-0.14.2', 'init', '-c', 'workload/cfg_icni2_serving_resource_init.yml', '-t', str(prom_token), '--uuid', '1234' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -89,7 +89,7 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
 
     try:
         print("Creating the ICNI2 workload..", params.uuid)
-        cmd=['./web-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
+        cmd=['./kube-burner-0.14.2', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -120,7 +120,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
 
     try:
         print("Deleting the ICNI2 workload..")
-        cmd=['./web-burner', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
+        cmd=['./kube-burner-0.14.2', 'init', '-c', 'workload/'+params.workload_template , '-t', str(prom_token), '--uuid', str(params.uuid), '--prometheus-url', str(prom_url), '-m', 'workload/metrics_full.yaml' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
@@ -130,7 +130,7 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
 
     try:
         print("Deleting the SPK pods..", params.uuid)
-        cmd=['./web-burner', 'init', '-c', 'workload/cfg_delete_icni2_serving_resource.yml', '-t', str(prom_token), '--uuid', '1234' ]
+        cmd=['./kube-burner-0.14.2', 'init', '-c', 'workload/cfg_delete_icni2_serving_resource.yml', '-t', str(prom_token), '--uuid', '1234' ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
         return "error", ErrorOutput(error.returncode,"{} failed with return code {}:\n{}".format(error.cmd[0],error.returncode,error.output))
