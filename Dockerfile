@@ -1,7 +1,7 @@
 # build poetry
 FROM quay.io/centos/centos:stream8 as poetry
 
-RUN dnf -y module install python39 && dnf -y install python39 python39-pip
+RUN dnf -y module install python39 && dnf -y install python39 python39-pip git
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 # final image
 FROM quay.io/centos/centos:stream8
 ENV package arcaflow_plugin_kubeburner
-RUN dnf -y module install python39 && dnf -y install python39 python39-pip
+RUN dnf -y module install python39 && dnf -y install python39 python39-pip git wget
 WORKDIR /app
 
 COPY --from=poetry /app/requirements.txt /app/
@@ -36,14 +36,19 @@ COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.1/kube-burner-1.1-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
-
+RUN git clone https://github.com/redhat-performance/web-burner.git
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
+RUN mv kube-burner kube-burner-0.14.2
+RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/
+RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz 
+RUN tar -xzf openshift-client-linux.tar.gz -C /usr/local/bin
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.4.2/kube-burner-1.4.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 RUN python3.9 -m pip install -r requirements.txt
 WORKDIR /app
 ENTRYPOINT ["python3", "arcaflow_plugin_kubeburner/kubeburner_plugin.py"]
 CMD []
 
-LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-kube-burner"
+LABEL org.opencontainers.image.source="https://github.com/redhat-performance/arcaflow-plugin-kube-burner"
 LABEL org.opencontainers.image.licenses="Apache-2.0+GPL-2.0-only"
 LABEL org.opencontainers.image.vendor="Arcalot project"
 LABEL org.opencontainers.image.authors="Arcalot contributors"

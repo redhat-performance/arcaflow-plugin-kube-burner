@@ -24,6 +24,23 @@ class KubeburnerPluginTest(unittest.TestCase):
                 error="This is an error"
             )
         )
+
+        plugin.test_object_serialization(
+            kubeburner_plugin.SuccessOutput(
+            uuid="ertf-34ft-2edw-iojh",
+            output="abcdefghijklmnopqrstuvwxyz"
+            )
+        )
+
+        plugin.test_object_serialization(
+            kubeburner_plugin.WebBurnerInputParams(
+            kubeconfig="abc",
+            number_of_nodes=50,
+            workload_template="cfg_icni1_f5_node_density.yml",
+            scale_factor=2,
+            bfd_enabled='false'
+            )
+        )
       
 
 
