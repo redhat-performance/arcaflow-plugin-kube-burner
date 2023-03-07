@@ -36,7 +36,7 @@ COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
-RUN git clone https://github.com/redhat-performance/web-burner.git --branch v1.0
+RUN git clone https://github.com/redhat-performance/web-burner.git
 RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 RUN mv kube-burner kube-burner-0.14.2
 RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/

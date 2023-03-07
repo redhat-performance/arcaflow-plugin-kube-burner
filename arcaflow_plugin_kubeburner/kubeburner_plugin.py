@@ -75,6 +75,8 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
     os.environ['BURST'] = str(params.burst)
     os.environ['INDEXING'] = params.indexing
     os.environ['NORMAL_LIMIT_COUNT'] = str(calculate_normal_limit_count(params.number_of_nodes))
+    os.environ['ES_SERVER'] = str(params.es_server)
+    os.environ['ES_INDEX'] = str(params.es_index)
     prom_url , prom_token = get_prometheus_creds()
 
     try:
@@ -116,6 +118,8 @@ def DeleteWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.U
     os.environ['BFD'] = params.bfd_enabled
     os.environ['QPS'] = str(params.qps)
     os.environ['BURST'] = str(params.burst)
+    os.environ['ES_SERVER'] = str(params.es_server)
+    os.environ['ES_INDEX'] = str(params.es_index)
     prom_url , prom_token = get_prometheus_creds()
 
     try:
