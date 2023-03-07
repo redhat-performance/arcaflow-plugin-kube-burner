@@ -74,7 +74,7 @@ def RunWebBurner(params: WebBurnerInputParams ) -> typing.Tuple[str, typing.Unio
     os.environ['QPS'] = str(params.qps)
     os.environ['BURST'] = str(params.burst)
     os.environ['INDEXING'] = params.indexing
-    os.environ['NORMAL_LIMIT_COUNT'] = calculate_normal_limit_count(params.number_of_nodes)
+    os.environ['NORMAL_LIMIT_COUNT'] = str(calculate_normal_limit_count(params.number_of_nodes))
     prom_url , prom_token = get_prometheus_creds()
 
     try:
