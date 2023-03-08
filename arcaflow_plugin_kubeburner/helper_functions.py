@@ -67,7 +67,7 @@ def create_kubeconfig_secret():
     ]
     secret = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     secret = secret.decode("utf-8")
-    sys.stdout = open('objectTemplates/secret_kubeconfig.yml', 'w')
+    sys.stdout = open('objectTemplates/secret_kubeconfig.yaml', 'w')
     print(secret)
 
     time.sleep(10)

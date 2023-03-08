@@ -158,7 +158,7 @@ def RunWebBurner(
 def DeleteWebBurner(
     params: WebBurnerInputParams,
 ) -> typing.Tuple[str, typing.Union[SuccessOutput, ErrorOutput]]:
-    print("==>> Running Kube Burner {} Workload ...".format(params.workload_template))
+    print("==>> Running Web Burner {} Workload ...".format(params.workload_template))
 
     readkubeconfig(params.kubeconfig)
     os.environ["KUBECONFIG"] = "./kubeconfig"
