@@ -27,7 +27,8 @@ from helper_functions import (
 @plugin.step(
     id="kube-burner",
     name="Kube-Burner Workload",
-    description="Kube-burner Workloads: node-density, node-density-cni, node-density-heavy, cluster-density, cluster-density-v2",
+    description="""Kube-burner Workloads: node-density, node-density-cni, node-density-heavy, 
+                    cluster-density, cluster-density-v2""",
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
 def RunKubeBurner(

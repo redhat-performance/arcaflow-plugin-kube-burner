@@ -34,7 +34,7 @@ def get_prometheus_creds():
         ]
         prom_token = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
         prom_token = prom_token.decode("utf-8")
-    except subprocess.CalledProcessError as error:
+    except subprocess.CalledProcessError:
         try:
             cmd = [
                 "oc", "sa", "new-token", "prometheus-k8s",
