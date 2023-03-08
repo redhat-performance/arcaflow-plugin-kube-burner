@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
 
-import sys, os
+import sys
+import os
 import typing
-from dataclasses import dataclass, field
-from arcaflow_plugin_sdk import plugin, validation, schema
-from typing import List, Dict
+from arcaflow_plugin_sdk import plugin
 import subprocess
-import datetime
-import yaml
 import time
 from kubeburner_schema import (
     KubeBurnerInputParams,
     WebBurnerInputParams,
     SuccessOutput,
     ErrorOutput,
-    output_schema,
     kube_burner_input_schema,
-    web_burner_input_schema,
     node_density_params,
     cluster_density_params,
     node_density_cni_params,
@@ -24,7 +19,6 @@ from kubeburner_schema import (
 )
 from helper_functions import (
     get_prometheus_creds,
-    safe_open,
     readkubeconfig,
     calculate_normal_limit_count,
 )
