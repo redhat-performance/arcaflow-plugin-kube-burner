@@ -8,7 +8,7 @@ from arcaflow_plugin_sdk import plugin, schema
 @dataclass
 class CommonInputParams:
     """
-    This is the data structure for the common input parameters for kube-burner and web-burner workloads.
+    This is the common input parameters data structure for kube-burner and web-burner
     """
 
     uuid: typing.Annotated[
@@ -45,7 +45,7 @@ class CommonInputParams:
 @dataclass
 class KubeBurnerInput:
     """
-    This is the data structure for the input parameters specific to kube-burner workloads.
+    This is the data structure for the input parameters specific to kube-burner
     """
 
     workload: typing.Annotated[
@@ -144,7 +144,7 @@ class KubeBurnerInput:
 @dataclass
 class WebBurnerInput:
     """
-    This is the data structure for the input parameters specific to web-burner workloads.
+    This is the data structure for the input parameters specific to web-burner
     """
 
     workload_template: typing.Annotated[
@@ -189,7 +189,7 @@ class WebBurnerInput:
 @dataclass
 class KubeBurnerInputParams(CommonInputParams, KubeBurnerInput):
     """
-    This is the data structure for the input parameters for kube-burner workloads.
+    This is the input parameters data structure for kube-burner workloads.
     """
 
 

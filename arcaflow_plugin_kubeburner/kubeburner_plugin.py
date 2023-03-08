@@ -78,7 +78,7 @@ def RunKubeBurner(
 @plugin.step(
     id="run-web-burner",
     name="Web-Burner Workload",
-    description="Web-burner Workload which uses kube-burner templates to create the workload",
+    description="Plugin to run the Web-burner workload",
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
 def RunWebBurner(
@@ -149,7 +149,7 @@ def RunWebBurner(
 @plugin.step(
     id="delete-web-burner",
     name="Web-Burner Workload",
-    description="Web-burner Workload which uses kube-burner templates to delete the workload",
+    description="Plugin to delete resources created by the web-burner workload",
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
 def DeleteWebBurner(
