@@ -1,9 +1,5 @@
 version: '3.2'
 services:
   plugin:
-    image: ghcr.io/arcalot/arcaflow-plugin-kube-burner
+    image: ghcr.io/redhat-performance/arcaflow-plugin-kube-burner
     build: .
-    volumes:
-      - source: ./kubeburner_input.yaml
-        target: /kubeburner_input.yaml
-        type: bind
