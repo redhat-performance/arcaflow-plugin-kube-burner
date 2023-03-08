@@ -21,6 +21,7 @@ from helper_functions import (
     get_prometheus_creds,
     readkubeconfig,
     calculate_normal_limit_count,
+    create_kubeconfig_secret,
 )
 
 
@@ -89,6 +90,7 @@ def RunWebBurner(
 
     readkubeconfig(params.kubeconfig)
     os.environ["KUBECONFIG"] = "./kubeconfig"
+    create_kubeconfig_secret()
     # exporting these vars as they are read by the kube-burner templates
     os.environ["SCALE"] = str(params.scale_factor)
     os.environ["BFD"] = params.bfd_enabled

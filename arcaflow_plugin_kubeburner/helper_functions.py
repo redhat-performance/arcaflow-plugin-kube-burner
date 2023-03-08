@@ -1,5 +1,7 @@
 import subprocess
 import os
+import sys
+import time
 from kubeburner_schema import ErrorOutput
 
 
@@ -55,3 +57,14 @@ def get_prometheus_creds():
 def calculate_normal_limit_count(cluster_size):
     count = (35 * cluster_size) // 120
     return count
+
+def create_kubeconfig_secret():
+    cmd=["oc", 'create', 'secret', 'generic',
+         'kubeconfig', '--from-file=kubeconfig',
+         '--dry-run=client', '--output=yaml' ]
+    secret= subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+    secret = secret.decode("utf-8")
+    sys.stdout = open('objectTemplates/secret_kubeconfig.yml', 'w')
+    print(secret)
+
+    time.sleep(10)
