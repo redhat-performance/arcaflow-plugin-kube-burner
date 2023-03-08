@@ -37,7 +37,7 @@ def get_prometheus_creds():
         try:
             cmd = [
                 "oc", "sa", "new-token", "prometheus-k8s",
-                "-n", "openshift-monitoring",                      
+                "-n", "openshift-monitoring",
             ]
             prom_token = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
             prom_token = prom_token.decode("utf-8")
