@@ -6,6 +6,7 @@ on:
   release:
     types:
       - published
+
 jobs:
   carpenter:
     uses: arcalot/arcaflow-reusable-workflows/.github/workflows/carpenter.yaml@main
@@ -15,5 +16,7 @@ jobs:
       quay_img_exp: 'never'
       github_username: ${{ github.actor }}
       github_namespace: ${{ github.repository_owner }}
-      quay_custom_namespace: "redhat-performance"
-    secrets: inherit
+    secrets: 
+      QUAY_NAMESPACE: ${{ secrets.QUAY_NAMESPACE }}
+      QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+      QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
