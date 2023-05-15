@@ -29,7 +29,7 @@ from helper_functions import (
     id="kube-burner",
     name="Kube-Burner Workload",
     description="""Kube-burner Workloads: node-density, node-density-cni,
-                node-density-heavy, cluster-density, cluster-density-v2""",
+                node-density-heavy, cluster-density, cluster-density-v2, cluster-density-ms """,
     outputs={"success": SuccessOutput, "error": ErrorOutput},
 )
 def RunKubeBurner(
@@ -97,7 +97,7 @@ def RunWebBurner(
     os.environ["QPS"] = str(params.qps)
     os.environ["BURST"] = str(params.burst)
     os.environ["INDEXING"] = params.indexing
-    os.environ["NORMAL_LIMIT_COUNT"] = str(
+    os.environ["LIMITCOUNT"] = str(
         calculate_normal_limit_count(params.number_of_nodes)
     )
     os.environ["ES_SERVER"] = str(params.es_server)
@@ -169,6 +169,9 @@ def DeleteWebBurner(
     os.environ["BURST"] = str(params.burst)
     os.environ["ES_SERVER"] = str(params.es_server)
     os.environ["ES_INDEX"] = str(params.es_index)
+    os.environ["LIMITCOUNT"] = str(
+        calculate_normal_limit_count(params.number_of_nodes)
+    )
     prom_url, prom_token = get_prometheus_creds()
 
     try:

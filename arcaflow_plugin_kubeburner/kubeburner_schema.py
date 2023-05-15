@@ -63,7 +63,7 @@ class KubeBurnerInput:
     log_level: typing.Annotated[
         typing.Optional[str],
         schema.name("log-level"),
-        schema.description("Allowed values: trace, debug, info, warn, error, fatal"),
+        schema.description("Allowed values: debug, info, warn, error, fatal"),
     ] = "info"
 
     timeout: typing.Annotated[
@@ -139,6 +139,12 @@ class KubeBurnerInput:
             "Percentage of job iterations that kube-burner will churn each round"
         ),
     ] = 10
+
+    local_indexing: typing.Annotated[
+        typing.Optional[str],
+        schema.name("local-indexing"),
+        schema.description("Enable local indexing"),
+    ] = "false"
 
 
 @dataclass
