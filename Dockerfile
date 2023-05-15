@@ -42,7 +42,7 @@ RUN mv kube-burner kube-burner-0.14.2
 RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/
 RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz 
 RUN tar -xzf openshift-client-linux.tar.gz -C /usr/local/bin
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.4.2/kube-burner-1.4.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.5/kube-burner-1.5-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 RUN python3.9 -m pip install -r requirements.txt
 WORKDIR /app
 ENTRYPOINT ["python3", "arcaflow_plugin_kubeburner/kubeburner_plugin.py"]
