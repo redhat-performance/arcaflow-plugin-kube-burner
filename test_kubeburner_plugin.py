@@ -11,7 +11,7 @@ class KubeburnerPluginTest(unittest.TestCase):
         plugin.test_object_serialization(
             kubeburner_plugin.KubeBurnerInputParams(
                 workload="node-density",
-                es_server="https://search-dev-chm.west-2.es.amazonaws.com:443",
+                es_server="https://search-dev-dummy.west-2.es.amazonaws.com:443",
                 es_index="index",
                 kubeconfig="abc",
             )
