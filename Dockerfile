@@ -31,14 +31,18 @@ ENV package arcaflow_plugin_kubeburner
 RUN dnf -y module install python39 && dnf -y install python39 python39-pip git wget
 WORKDIR /app
 
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin/kubectl
+
 COPY --from=poetry /app/requirements.txt /app/
 COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
 RUN git clone https://github.com/redhat-performance/web-burner.git
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.14.2/kube-burner-0.14.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
-RUN mv kube-burner kube-burner-0.14.2
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.2/kube-burner-1.7.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
+RUN mv kube-burner kube-burner-wb
 RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/
 RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz 
 RUN tar -xzf openshift-client-linux.tar.gz -C /usr/local/bin
