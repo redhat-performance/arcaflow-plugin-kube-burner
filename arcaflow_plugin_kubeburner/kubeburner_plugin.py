@@ -102,12 +102,14 @@ def RunWebBurner(
     )
     os.environ["ES_SERVER"] = str(params.es_server)
     os.environ["ES_INDEX"] = str(params.es_index)
+    os.environ["SRIOV"] = str(params.sriov)
+    os.environ["BRIDGE"] = str(params.bridge)
     prom_url, prom_token = get_prometheus_creds()
 
     try:
         print("Creating the SPK pods..")
         cmd = [
-            "./kube-burner-0.14.2", "init",
+            "./kube-burner-wb", "init",
             "-c", "workload/cfg_icni2_serving_resource_init.yml",
             "-t", str(prom_token),
             "--uuid", "1234",
@@ -127,12 +129,12 @@ def RunWebBurner(
     try:
         print("Creating the ICNI2 workload..", params.uuid)
         cmd = [
-            "./kube-burner-0.14.2", "init",
+            "./kube-burner-wb", "init",
             "-c", "workload/" + params.workload_template,
             "-t", str(prom_token),
             "--uuid", str(params.uuid),
             "--prometheus-url", str(prom_url),
-            "-m", "workload/metrics_full.yaml",
+            "-m", "workload/metrics_full.yml",
         ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
@@ -172,17 +174,19 @@ def DeleteWebBurner(
     os.environ["LIMITCOUNT"] = str(
         calculate_normal_limit_count(params.number_of_nodes)
     )
+    os.environ["SRIOV"] = str(params.sriov)
+    os.environ["BRIDGE"] = str(params.bridge)
     prom_url, prom_token = get_prometheus_creds()
 
     try:
         print("Deleting the ICNI2 workload..")
         cmd = [
-            "./kube-burner-0.14.2", "init",
+            "./kube-burner-wb", "init",
             "-c", "workload/" + params.workload_template,
             "-t", str(prom_token),
             "--uuid", str(params.uuid),
             "--prometheus-url", str(prom_url),
-            "-m", "workload/metrics_full.yaml",
+            "-m", "workload/metrics_full.yml",
         ]
         process_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as error:
@@ -199,7 +203,7 @@ def DeleteWebBurner(
     try:
         print("Deleting the SPK pods..", params.uuid)
         cmd = [
-            "./kube-burner-0.14.2", "init",
+            "./kube-burner-wb", "init",
             "-c", "workload/cfg_delete_icni2_serving_resource.yml",
             "-t", str(prom_token),
             "--uuid", "1234",
