@@ -41,7 +41,7 @@ COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
 RUN git clone https://github.com/redhat-performance/web-burner.git
-RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.2/kube-burner-1.7.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
+RUN curl -L https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.7.2/kube-burner-V1.7.2-Linux-x86_64.tar.gz | tar xz -C /app/ kube-burner
 RUN mv kube-burner kube-burner-wb
 RUN cp -r /app/web-burner/workload /app/web-burner/objectTemplates /app/
 RUN wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz 
