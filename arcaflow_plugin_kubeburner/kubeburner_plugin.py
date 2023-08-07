@@ -102,6 +102,8 @@ def RunWebBurner(
     )
     os.environ["ES_SERVER"] = str(params.es_server)
     os.environ["ES_INDEX"] = str(params.es_index)
+    os.environ["SRIOV"] = str(params.sriov)
+    os.environ["BRIDGE"] = str(params.bridge)
     prom_url, prom_token = get_prometheus_creds()
 
     try:
@@ -172,6 +174,8 @@ def DeleteWebBurner(
     os.environ["LIMITCOUNT"] = str(
         calculate_normal_limit_count(params.number_of_nodes)
     )
+    os.environ["SRIOV"] = str(params.sriov)
+    os.environ["BRIDGE"] = str(params.bridge)
     prom_url, prom_token = get_prometheus_creds()
 
     try:
