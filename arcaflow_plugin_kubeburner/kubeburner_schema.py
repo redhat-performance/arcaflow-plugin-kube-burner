@@ -194,13 +194,18 @@ class WebBurnerInput:
     sriov: typing.Annotated[
         typing.Optional[str],
         schema.name("SRIOV"),
-        schema.description("To enable or disable sriov, disabling it will create macvlan network attachment definitions instead"),
+        schema.description(
+            """To enable or disable sriov, disabling it will create macvlan network
+            attachment definitions instead"""
+        ),
     ] = "true"
 
     bridge: typing.Annotated[
         typing.Optional[str],
         schema.name("BRIDGE"),
-        schema.description("The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters"),
+        schema.description(
+            "The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters"
+        ),
     ] = "br-ex"
 
 
