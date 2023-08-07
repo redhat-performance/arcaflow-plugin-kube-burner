@@ -47,7 +47,10 @@ def get_prometheus_creds():
 
 
 def calculate_normal_limit_count(cluster_size):
-    count = (35 * cluster_size) // 120
+    if cluster_size >= 4:
+        count = (35 * cluster_size) // 120
+    else:
+        count = 1
     return count
 
 
