@@ -1,11 +1,15 @@
 workload_template: 'cfg_icni2_node_density2.yml'
-scale_factor: 2
-number_of_nodes: 3
+scale_factor: 1
+qps: 20
+burst: 20
+number_of_nodes: 2
 bfd_enabled: false
 uuid: 'poiy761b-d12e-4922-86a2-ea17354d80hh'
 indexing: true
 es_server: ''
 es_index: ''
+bridge: br-ex
+sriov: false
 kubeconfig: |
   apiVersion: v1
   clusters:
