@@ -4,7 +4,7 @@ ARG package=arcaflow_plugin_kubeburner
 # STAGE 1 -- Build module dependencies and run tests
 # The 'poetry' and 'coverage' modules are installed and verson-controlled in the
 # quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase image to limit drift
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.0 as build
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.2 as build
 ARG package
 
 WORKDIR /app
@@ -26,7 +26,7 @@ RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 
 
 # STAGE 2 -- Build final plugin image
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.0
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.2
 ENV package arcaflow_plugin_kubeburner
 RUN dnf -y install git wget
 WORKDIR /app
