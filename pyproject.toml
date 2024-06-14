@@ -8,6 +8,8 @@ license = "Apache-2.0+GPL-2.0-only"
 [tool.poetry.dependencies]
 python = "^3.9"
 arcaflow-plugin-sdk = "^0.14.0"
+requests = "^2.32.0"   # fixes cve-2024-3651
+idna = "^3.7"          # fixes cve-2024-35195
 
 [tool.poetry.dev-dependencies]
 docformatter = "^1.5.0"
