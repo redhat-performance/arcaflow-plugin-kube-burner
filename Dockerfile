@@ -1,42 +1,42 @@
-# build poetry
-FROM quay.io/centos/centos:stream8 as poetry
+# Package path for this plugin module relative to the repo root
+ARG package=arcaflow_plugin_kubeburner
 
-RUN dnf -y module install python39 && dnf -y install python39 python39-pip git
+# STAGE 1 -- Build module dependencies and run tests
+# The 'poetry' and 'coverage' modules are installed and verson-controlled in the
+# quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase image to limit drift
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.2 as build
+ARG package
 
 WORKDIR /app
 
 COPY poetry.lock /app/
 COPY pyproject.toml /app/
 
-RUN python3.9 -m pip install poetry \
- && python3.9 -m poetry config virtualenvs.create false \
- && python3.9 -m poetry install --without dev \
- && python3.9 -m poetry export -f requirements.txt --output requirements.txt --without-hashes
+# Convert the dependencies from poetry to a static requirements.txt file
+RUN python -m poetry install --without dev --no-root \
+ && python -m poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-ENV package arcaflow_plugin_kubeburner
-# run tests
+ENV PYTHONPATH /app/${package}
 COPY ${package}/ /app/${package}
 COPY test_kubeburner_plugin.py /app/
 
-ENV PYTHONPATH /app/${package}
-RUN mkdir /htmlcov
 RUN pip3 install coverage
 RUN python3 -m coverage run test_kubeburner_plugin.py
 RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 
 
-# final image
-FROM quay.io/centos/centos:stream8
+# STAGE 2 -- Build final plugin image
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.2
 ENV package arcaflow_plugin_kubeburner
-RUN dnf -y module install python39 && dnf -y install python39 python39-pip git wget
+RUN dnf -y install git wget
 WORKDIR /app
 
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
-COPY --from=poetry /app/requirements.txt /app/
-COPY --from=poetry /htmlcov /htmlcov/
+COPY --from=build /app/requirements.txt /app/
+COPY --from=build /htmlcov /htmlcov/
 COPY LICENSE /app/
 COPY README.md /app/
 COPY ${package}/ /app/${package}
