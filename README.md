@@ -86,69 +86,69 @@ Plugin to delete resources created by the web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>WebBurnerInputParams</td></tr>
 <tr><th>Properties</th><td><details><summary>bfd_enabled (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>BFD</td></tr><tr><th>Description:</th><td width="500">Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>bridge (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>BRIDGE</td></tr><tr><th>Description:</th><td width="500">The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>burst (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>es_index (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>es_server (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>indexing (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>INDEXING</td></tr><tr><th>Description:</th><td width="500">To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>kubeconfig (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>number_of_nodes (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td>Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td width="500">Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>qps (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>scale_factor (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Scale Factor</td></tr><tr><th>Description:</th><td width="500">Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>sriov (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>To enable or disable sriov, disabling it will create macvlan network
+                <table><tbody><tr><th>Name:</th><td>SRIOV</td></tr><tr><th>Description:</th><td width="500">To enable or disable sriov, disabling it will create macvlan network
             attachment definitions instead</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>workload_template (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td>Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td width="500">Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>WebBurnerInputParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>bfd_enabled (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>BFD</td></tr><tr><th>Description:</th><td width="500">Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>bridge (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>BRIDGE</td></tr><tr><th>Description:</th><td width="500">The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>burst (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>es_index (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>es_server (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>indexing (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>INDEXING</td></tr><tr><th>Description:</th><td width="500">To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>kubeconfig (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>number_of_nodes (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td>Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td width="500">Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>qps (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>scale_factor (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Scale Factor</td></tr><tr><th>Description:</th><td width="500">Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>sriov (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>To enable or disable sriov, disabling it will create macvlan network
+        <table><tbody><tr><th>Name:</th><td>SRIOV</td></tr><tr><th>Description:</th><td width="500">To enable or disable sriov, disabling it will create macvlan network
             attachment definitions instead</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>workload_template (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td>Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td width="500">Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -162,16 +162,16 @@ Plugin to delete resources created by the web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ErrorOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>exit_code (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ErrorOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>exit_code (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
@@ -183,15 +183,15 @@ Plugin to delete resources created by the web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>SuccessOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>SuccessOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -210,103 +210,103 @@ Kube-burner Workloads: node-density, node-density-cni,
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>KubeBurnerInputParams</td></tr>
 <tr><th>Properties</th><td><details><summary>alerting (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Enable alerting(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>alerting</td></tr><tr><th>Description:</th><td width="500">Enable alerting(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>burst (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>churn (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Enable churning(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>churn</td></tr><tr><th>Description:</th><td width="500">Enable churning(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>churn_delay (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Time to wait between each churn</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>churn-delay</td></tr><tr><th>Description:</th><td width="500">Time to wait between each churn</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>churn_duration (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Churn duration</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;1h0m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>churn-duration</td></tr><tr><th>Description:</th><td width="500">Churn duration</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;1h0m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>churn_percent (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Percentage of job iterations that kube-burner will churn each round</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>churn-percent</td></tr><tr><th>Description:</th><td width="500">Percentage of job iterations that kube-burner will churn each round</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>es_index (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>es_server (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>gc (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Garbage collect created namespaces(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>gc</td></tr><tr><th>Description:</th><td width="500">Garbage collect created namespaces(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>iterations (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Cluster-density iterations</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>500</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>iterations</td></tr><tr><th>Description:</th><td width="500">Cluster-density iterations</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>500</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>kubeconfig (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>local_indexing (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Enable local indexing</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>local-indexing</td></tr><tr><th>Description:</th><td width="500">Enable local indexing</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>log_level (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Allowed values: debug, info, warn, error, fatal</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;info&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>log-level</td></tr><tr><th>Description:</th><td width="500">Allowed values: debug, info, warn, error, fatal</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;info&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>network_policies (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Enable network policies in the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>network-policies</td></tr><tr><th>Description:</th><td width="500">Enable network policies in the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>pod_ready_threshold (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Pod ready timeout threshold for node-density workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;5s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>pod-ready-threshold</td></tr><tr><th>Description:</th><td width="500">Pod ready timeout threshold for node-density workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;5s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>pods_per_node (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Pods per node for node-density* workloads</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>245</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>pods-per-node</td></tr><tr><th>Description:</th><td width="500">Pods per node for node-density* workloads</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>245</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>probes_period (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Perf app readiness/livenes probes period in seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>probes-period</td></tr><tr><th>Description:</th><td width="500">Perf app readiness/livenes probes period in seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>qps (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>timeout (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Benchmark timeout</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2h&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>timeout</td></tr><tr><th>Description:</th><td width="500">Benchmark timeout</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2h&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>workload (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Name</td></tr><tr><th>Description:</th><td>workload name</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Name</td></tr><tr><th>Description:</th><td width="500">workload name</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>KubeBurnerInputParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>alerting (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Enable alerting(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>alerting</td></tr><tr><th>Description:</th><td width="500">Enable alerting(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>burst (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>churn (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Enable churning(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>churn</td></tr><tr><th>Description:</th><td width="500">Enable churning(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>churn_delay (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Time to wait between each churn</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>churn-delay</td></tr><tr><th>Description:</th><td width="500">Time to wait between each churn</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>churn_duration (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Churn duration</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;1h0m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>churn-duration</td></tr><tr><th>Description:</th><td width="500">Churn duration</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;1h0m0s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>churn_percent (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Percentage of job iterations that kube-burner will churn each round</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>churn-percent</td></tr><tr><th>Description:</th><td width="500">Percentage of job iterations that kube-burner will churn each round</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>es_index (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>es_server (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>gc (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Garbage collect created namespaces(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>gc</td></tr><tr><th>Description:</th><td width="500">Garbage collect created namespaces(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>iterations (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Cluster-density iterations</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>500</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>iterations</td></tr><tr><th>Description:</th><td width="500">Cluster-density iterations</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>500</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>kubeconfig (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>local_indexing (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Enable local indexing</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>local-indexing</td></tr><tr><th>Description:</th><td width="500">Enable local indexing</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>log_level (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Allowed values: debug, info, warn, error, fatal</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;info&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>log-level</td></tr><tr><th>Description:</th><td width="500">Allowed values: debug, info, warn, error, fatal</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;info&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>network_policies (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Enable network policies in the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>network-policies</td></tr><tr><th>Description:</th><td width="500">Enable network policies in the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>pod_ready_threshold (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Pod ready timeout threshold for node-density workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;5s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>pod-ready-threshold</td></tr><tr><th>Description:</th><td width="500">Pod ready timeout threshold for node-density workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;5s&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>pods_per_node (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Pods per node for node-density* workloads</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>245</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>pods-per-node</td></tr><tr><th>Description:</th><td width="500">Pods per node for node-density* workloads</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>245</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>probes_period (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Perf app readiness/livenes probes period in seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>probes-period</td></tr><tr><th>Description:</th><td width="500">Perf app readiness/livenes probes period in seconds</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>10</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>qps (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>timeout (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Benchmark timeout</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2h&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>timeout</td></tr><tr><th>Description:</th><td width="500">Benchmark timeout</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;2h&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>workload (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Name</td></tr><tr><th>Description:</th><td>workload name</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Name</td></tr><tr><th>Description:</th><td width="500">workload name</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -320,16 +320,16 @@ Kube-burner Workloads: node-density, node-density-cni,
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ErrorOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>exit_code (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ErrorOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>exit_code (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
@@ -341,15 +341,15 @@ Kube-burner Workloads: node-density, node-density-cni,
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>SuccessOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>SuccessOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -366,69 +366,69 @@ Plugin to run the Web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>WebBurnerInputParams</td></tr>
 <tr><th>Properties</th><td><details><summary>bfd_enabled (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>BFD</td></tr><tr><th>Description:</th><td width="500">Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>bridge (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>BRIDGE</td></tr><tr><th>Description:</th><td width="500">The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>burst (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>es_index (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>es_server (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>indexing (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>INDEXING</td></tr><tr><th>Description:</th><td width="500">To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>kubeconfig (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>number_of_nodes (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td>Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td width="500">Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>qps (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>scale_factor (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Scale Factor</td></tr><tr><th>Description:</th><td width="500">Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>sriov (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>To enable or disable sriov, disabling it will create macvlan network
+                <table><tbody><tr><th>Name:</th><td>SRIOV</td></tr><tr><th>Description:</th><td width="500">To enable or disable sriov, disabling it will create macvlan network
             attachment definitions instead</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>workload_template (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td>Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td width="500">Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>WebBurnerInputParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>bfd_enabled (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>BFD</td></tr><tr><th>Description:</th><td width="500">Bidirectional Forwarding Detection</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>bridge (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>BRIDGE</td></tr><tr><th>Description:</th><td width="500">The network bridge to use. breth0 for kind.sh ovn-kubernetes clusters</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;br-ex&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>burst (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Burst</td></tr><tr><th>Description:</th><td width="500">Maximum burst for throttle</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>es_index (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-index</td></tr><tr><th>Description:</th><td width="500">The ElasticSearch index used to index the metrics</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>es_server (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>es-server</td></tr><tr><th>Description:</th><td width="500">List of ES instances</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>indexing (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>INDEXING</td></tr><tr><th>Description:</th><td width="500">To enable or disable indexing in elasticsearch(true/false)</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;false&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>kubeconfig (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td>Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>kubeconfig</td></tr><tr><th>Description:</th><td width="500">Openshift cluster kubeconfig file content as a string</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>number_of_nodes (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td>Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Number of nodes</td></tr><tr><th>Description:</th><td width="500">Size of cluster/ number of nodes in the cluster</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>qps (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>QPS</td></tr><tr><th>Description:</th><td width="500">Max number of queries per second</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>scale_factor (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Scale Factor</td></tr><tr><th>Description:</th><td width="500">Scaling factor for the workload</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>sriov (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>To enable or disable sriov, disabling it will create macvlan network
+        <table><tbody><tr><th>Name:</th><td>SRIOV</td></tr><tr><th>Description:</th><td width="500">To enable or disable sriov, disabling it will create macvlan network
             attachment definitions instead</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;true&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>uuid</td></tr><tr><th>Description:</th><td width="500">uuid to be used for the job</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>workload_template (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td>Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Workload Template</td></tr><tr><th>Description:</th><td width="500">Kube-burner Template to use</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
@@ -442,16 +442,16 @@ Plugin to run the Web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>ErrorOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>exit_code (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>ErrorOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>error (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td>Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Failure Error</td></tr><tr><th>Description:</th><td width="500">Reason for failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>exit_code (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td>Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>Exit Code</td></tr><tr><th>Description:</th><td width="500">Exit code returned by the program in case of a failure</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
@@ -463,15 +463,15 @@ Plugin to run the Web-burner workload
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>SuccessOutput</td></tr>
 <tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details><details><summary>uuid (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>SuccessOutput (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>output (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td>Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>Kube burner workload output</td></tr><tr><th>Description:</th><td width="500">Output generated by the kube burner workload</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>uuid (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td>UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>UUID</td></tr><tr><th>Description:</th><td width="500">UUID used for this workload run</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details></details></td></tr>
